@@ -1,9 +1,10 @@
 import { LogoStyled } from './styles'
+import logo from '../../assets/Logos/logo.png'
 
 const Logo = () => {
   return (
     <LogoStyled>
-      <img src="./logo.png" alt="logo" />
+      <img src={logo} alt="logo" />
     </LogoStyled>
   )
 }

@@ -1,6 +1,10 @@
 import Logo from '../Logo'
 import * as S from './style'
 
+import instagram from '../../assets/Logos/instagram.svg'
+import facebook from '../../assets/Logos/facebook.svg'
+import twitter from '../../assets/Logos/twitter.svg'
+
 const Rodape = () => {
   return (
     <S.Footer>
@@ -8,17 +12,17 @@ const Rodape = () => {
       <S.Links>
         <li>
           <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
-            <img src="./instagram.svg" alt="Instagram logo" />
+            <img src={instagram} alt="Instagram logo" />
           </a>
         </li>
         <li>
           <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-            <img src="./facebook.svg" alt="Facebook logo" />
+            <img src={facebook} alt="Facebook logo" />
           </a>
         </li>
         <li>
           <a href="https://www.x.com" target="_blank" rel="noreferrer">
-            <img src="./twitter.svg" alt="Twitter logo" />
+            <img src={twitter} alt="Twitter logo" />
           </a>
         </li>
       </S.Links>

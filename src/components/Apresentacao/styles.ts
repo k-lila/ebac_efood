@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Cores from '../../styles/cores'
+import italiana from '../../assets/Imagens/italiana.png'
 
 export const Container = styled.div`
   position: relative;
@@ -7,6 +8,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  position: relative;
+  background-image: url(${italiana});
+  background-position: center;
+  background-size: 100% auto;
+
   p,
   h2 {
     font-size: 32px;
@@ -23,15 +30,15 @@ export const Container = styled.div`
     font-weight: 900;
     margin-bottom: 32px;
   }
-`
 
-export const Fundo = styled.div`
-  z-index: 0;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-image: url('./italiana.png');
-  filter: brightness(50%);
-  background-position: center;
-  background-size: 100% auto;
+  &::after {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0.5;
+  }
 `

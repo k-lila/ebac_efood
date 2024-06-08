@@ -1,10 +1,11 @@
 import * as S from './styles'
+import pizza from '../../assets/Imagens/pizza.png'
 
 const Produto = () => {
   return (
     <S.Card>
       <S.Imagem>
-        <img src="./pizza.png" alt="Imagem de uma pizza" />
+        <img src={pizza} alt="Imagem de uma pizza" />
       </S.Imagem>
       <S.Texto>
         <h3>Pizza Marguerita</h3>

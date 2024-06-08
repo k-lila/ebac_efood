@@ -1,11 +1,13 @@
 import Restaurante from '../../components/Restaurante'
 import { Container } from './styles'
+import japonesa from '../../assets/Imagens/japonesa.png'
+import italiana from '../../assets/Imagens/italiana.png'
 
 const Listagem = () => {
   return (
     <Container>
       <Restaurante
-        imagem="./japonesa.png"
+        imagem={japonesa}
         titulo="Hioki Sushi"
         nota="4.9"
         descricao={
@@ -15,7 +17,7 @@ const Listagem = () => {
         destaque
       />
       <Restaurante
-        imagem="./italiana.png"
+        imagem={italiana}
         titulo="La Dolce Vita Trattoria"
         nota="4.6"
         descricao={
@@ -24,7 +26,7 @@ const Listagem = () => {
         categoria="Italiana"
       />
       <Restaurante
-        imagem="./italiana.png"
+        imagem={italiana}
         titulo="La Dolce Vita Trattoria"
         nota="4.6"
         descricao={
@@ -33,7 +35,7 @@ const Listagem = () => {
         categoria="Italiana"
       />
       <Restaurante
-        imagem="./italiana.png"
+        imagem={italiana}
         titulo="La Dolce Vita Trattoria"
         nota="4.6"
         descricao={
@@ -42,7 +44,7 @@ const Listagem = () => {
         categoria="Italiana"
       />
       <Restaurante
-        imagem="./italiana.png"
+        imagem={italiana}
         titulo="La Dolce Vita Trattoria"
         nota="4.6"
         descricao={
@@ -51,7 +53,7 @@ const Listagem = () => {
         categoria="Italiana"
       />
       <Restaurante
-        imagem="./italiana.png"
+        imagem={italiana}
         titulo="La Dolce Vita Trattoria"
         nota="4.6"
         descricao={

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Cores from '../../styles/cores'
 import { Link } from 'react-router-dom'
+import header from '../../assets/Imagens/header.png'
 
 export const Cabecalho = styled.header`
   height: 162px;
@@ -8,7 +9,7 @@ export const Cabecalho = styled.header`
   display: flex;
   justify-content: center;
   position: relative;
-  background-image: url('./header.png');
+  background-image: url(${header});
   background-position: center;
 `
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Cores from '../../styles/cores'
+import hero from '../../assets/Imagens/hero.png'
 
 export const Cabecalho = styled.header`
   display: flex;
@@ -7,7 +8,7 @@ export const Cabecalho = styled.header`
   align-items: center;
   background-color: ${Cores.bege2};
   height: 360px;
-  background-image: url('./hero.png');
+  background-image: url(${hero});
   background-position: center;
 `
 

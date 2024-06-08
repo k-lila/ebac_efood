@@ -1,4 +1,5 @@
 import * as S from './styles'
+import estrela from '../../assets/Imagens/star_favorite.png'
 
 type Props = {
   imagem: string
@@ -19,8 +20,7 @@ const Restaurante = (props: Props) => {
         <S.Titulo>
           <p>{props.titulo}</p>
           <p>
-            {props.nota}{' '}
-            <img src="star_favorite.png" alt="Estrela de favorito" />
+            {props.nota} <img src={estrela} alt="Estrela de favorito" />
           </p>
         </S.Titulo>
         <S.Texto>{props.descricao}</S.Texto>
