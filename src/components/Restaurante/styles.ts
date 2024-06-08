@@ -49,15 +49,18 @@ export const Texto = styled.p`
   white-space: pre-line;
 `
 export const SaibaMais = styled(Link)`
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   background-color: ${Cores.vermelho};
-  color: ${Cores.bege1};
+  color: ${Cores.bege2};
+  width: 82px;
+  height: 24px;
   font-size: 14px;
   font-weight: 700;
   margin-left: 8px;
   margin-top: 16px;
-  width: 82px;
-  height: 24px;
   cursor: pointer;
 `
 export const Faixa = styled.div`
