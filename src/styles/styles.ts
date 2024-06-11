@@ -11,7 +11,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 export const Container = styled.div`
-  max-width: 1366px;
   margin: 0 auto;
   background-color: ${Cores.bege1};
 `

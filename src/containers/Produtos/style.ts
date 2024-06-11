@@ -6,6 +6,6 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 32px;
   width: 1024px;
-  height: 708px;
+  // height: 708px;
   background-color: transparent;
 `

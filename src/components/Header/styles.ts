@@ -15,6 +15,7 @@ export const Cabecalho = styled.header`
 
 export const Line = styled.div`
   position: absolute;
+  max-width: 1366px;
   top: 59px;
   padding: 0 171px;
   display: flex;

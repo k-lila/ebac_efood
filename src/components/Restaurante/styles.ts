@@ -49,6 +49,9 @@ export const Texto = styled.p`
   white-space: pre-line;
 `
 export const SaibaMais = styled(Link)`
+  position: absolute;
+  top: calc(100% - 32px);
+  left: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,8 +62,6 @@ export const SaibaMais = styled(Link)`
   height: 24px;
   font-size: 14px;
   font-weight: 700;
-  margin-left: 8px;
-  margin-top: 16px;
   cursor: pointer;
 `
 export const Faixa = styled.div`

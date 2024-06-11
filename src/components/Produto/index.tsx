@@ -1,21 +1,42 @@
+import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { setModal } from '../../store/reducers/modal'
 import * as S from './styles'
-import pizza from '../../assets/Imagens/pizza.png'
 
-const Produto = () => {
+type Props = {
+  id: number
+  foto: string
+  nome: string
+  descricao: string
+}
+
+const Produto = (props: Props) => {
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  const restaurante = id ? parseInt(id) : -1
+  const handleClick = () => {
+    dispatch(
+      setModal({
+        open: true,
+        restaurante: restaurante,
+        receita: props.id
+      })
+    )
+  }
+
   return (
-    <S.Card>
-      <S.Imagem>
-        <img src={pizza} alt="Imagem de uma pizza" />
-      </S.Imagem>
-      <S.Texto>
-        <h3>Pizza Marguerita</h3>
-        <p>
-          A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-          manjericão fresco e um toque de azeite. Sabor e simplicidade!
-        </p>
-      </S.Texto>
-      <S.Adicionar>Adicionar ao carrinho</S.Adicionar>
-    </S.Card>
+    <>
+      <S.Card>
+        <S.Imagem>
+          <img src={props.foto} alt="Imagem de uma pizza" />
+        </S.Imagem>
+        <S.Texto>
+          <h3>{props.nome}</h3>
+          <p>{props.descricao}</p>
+        </S.Texto>
+        <S.Adicionar onClick={handleClick}>Adicionar ao carrinho</S.Adicionar>
+      </S.Card>
+    </>
   )
 }
 

@@ -2,19 +2,24 @@ import * as S from './styles'
 import estrela from '../../assets/Imagens/star_favorite.png'
 
 type Props = {
+  id: number
   imagem: string
   titulo: string
   descricao: string
-  nota: string
+  nota: number
   categoria: string
   destaque?: boolean
 }
 
 const Restaurante = (props: Props) => {
+  const getDescricao = (des: string) => {
+    return des.length > 245 ? des.slice(0, 245) + '...' : des
+  }
+
   return (
     <S.Container>
       <S.Imagem>
-        <img src={props.imagem} alt="Foto da receita" />
+        <img src={props.imagem} alt="Foto do restaurante" />
       </S.Imagem>
       <S.Descricao>
         <S.Titulo>
@@ -23,8 +28,8 @@ const Restaurante = (props: Props) => {
             {props.nota} <img src={estrela} alt="Estrela de favorito" />
           </p>
         </S.Titulo>
-        <S.Texto>{props.descricao}</S.Texto>
-        <S.SaibaMais to="/Perfil">Saiba mais</S.SaibaMais>
+        <S.Texto>{getDescricao(props.descricao)}</S.Texto>
+        <S.SaibaMais to={`/perfil/${props.id}`}>Saiba mais</S.SaibaMais>
       </S.Descricao>
       <S.Faixa>
         {props.destaque ? <span>Destaque da semana</span> : null}

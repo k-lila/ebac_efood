@@ -7,7 +7,6 @@ export const Container = styled.div`
   row-gap: 48px;
   column-gap: 80px;
   width: 1024px;
-  height: 1290px;
   margin: 80px auto 120px auto;
   background-color: ${Cores.bege1};
 `
