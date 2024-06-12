@@ -1,34 +1,54 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+import { useGetFeaturedInfoQuery } from '../../services/api'
 import { setModal } from '../../store/reducers/modal'
 import * as S from './styles'
 import close from '../../assets/Imagens/close.svg'
+import formatoPreco from '../../utils/formatoPreco'
+import { adicionaItem } from '../../store/reducers/carrinho'
+import { setCart } from '../../store/reducers/modalCart'
+
+const getNewId = (lista_id: number[]) => {
+  let newId = 0
+  while (lista_id.includes(newId)) {
+    newId++
+  }
+  return newId
+}
 
 const Modal = () => {
-  const api = useSelector((state: RootReducer) => state.api)
+  const dispatch = useDispatch()
+  const restaurantes = useGetFeaturedInfoQuery().data
   const modal = useSelector((state: RootReducer) => state.modal)
-  const restauranteSelecionado = api.find((res) => res.id === modal.restaurante)
+  const carrinho = useSelector((state: RootReducer) => state.carrinho.items)
+  const restauranteSelecionado = restaurantes
+    ? restaurantes.find((res) => res.id === modal.restaurante)
+    : null
   const receitaSelecionada = restauranteSelecionado
     ? restauranteSelecionado.cardapio.find((rec) => rec.id === modal.receita)
     : null
-  const dispatch = useDispatch()
   const handleClose = () => {
     dispatch(setModal({ open: false, restaurante: -1, receita: -1 }))
   }
-  const formatoPreco = (preco: number | undefined) => {
-    if (preco) {
-      return new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      }).format(preco)
-    } else {
-      return -1
-    }
+  const handleAdicionar = () => {
+    const lista_id = carrinho
+      .map((car) => car.id)
+      .filter((id): id is number => id !== undefined)
+    dispatch(
+      adicionaItem({
+        id: getNewId(lista_id),
+        receita: receitaSelecionada?.nome,
+        foto: receitaSelecionada?.foto,
+        preco: receitaSelecionada?.preco
+      })
+    )
+    handleClose()
+    dispatch(setCart(true))
   }
 
   return (
     <>
-      <S.Background />
+      <S.Background onClick={handleClose} />
       <S.Modal>
         <S.Foto>
           <img src={receitaSelecionada?.foto} alt="Foto da receita" />
@@ -41,7 +61,7 @@ const Modal = () => {
             <br />
             Serve: {receitaSelecionada?.porcao}
           </p>
-          <S.Adicionar>
+          <S.Adicionar onClick={handleAdicionar}>
             Adicione ao carrinho - {formatoPreco(receitaSelecionada?.preco)}
           </S.Adicionar>
         </S.Info>

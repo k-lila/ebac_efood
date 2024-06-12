@@ -1,17 +1,17 @@
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
 import Produto from '../../components/Produto'
 import * as S from './style'
+import { useGetFeaturedInfoQuery } from '../../services/api'
 
 const Produtos = () => {
   const { id } = useParams()
-  const restaurantes = useSelector((state: RootReducer) => state.api)
-  const restaurante = restaurantes.find((res) => `${res.id}` === id)
+  const restaurantes = useGetFeaturedInfoQuery().data
+  const restaurante = restaurantes
+    ? restaurantes.find((res) => `${res.id}` === id)
+    : null
   const getDescricao = (des: string) => {
     return des.length > 150 ? des.slice(0, 150) + '...' : des
   }
-
   return (
     <S.Container>
       {restaurante

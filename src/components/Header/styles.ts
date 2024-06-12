@@ -23,6 +23,7 @@ export const Line = styled.div`
   justify-content: space-between;
   background-color: transparent;
   span {
+    cursor: pointer;
     background-color: transparent;
     font-size: 18px;
     font-weight: 900;

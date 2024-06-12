@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
 import { useParams } from 'react-router-dom'
 import * as S from './styles'
+import { useGetFeaturedInfoQuery } from '../../services/api'
 
 const Apresentacao = () => {
   const { id } = useParams()
-  const restaurantes = useSelector((state: RootReducer) => state.api)
+  const restaurantes = useGetFeaturedInfoQuery().data
+
   const restaurante = restaurantes
     ? restaurantes.find((res) => `${res.id}` === id)
     : null
