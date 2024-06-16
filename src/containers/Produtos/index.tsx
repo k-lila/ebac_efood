@@ -5,17 +5,15 @@ import * as S from './style'
 
 const Produtos = () => {
   const { id } = useParams()
-  const restaurantes = useGetFeaturedInfoQuery().data
-  const restaurante = restaurantes
-    ? restaurantes.find((res) => `${res.id}` === id)
-    : null
+  const { data } = useGetFeaturedInfoQuery()
+  const restaurante = data ? data.find((res) => `${res.id}` === id) : null
   const getDescricao = (des: string) => {
     return des.length > 150 ? des.slice(0, 150) + '...' : des
   }
   return (
     <S.Container>
       {restaurante
-        ? restaurante.cardapio.map((receita) => {
+        ? restaurante.cardapio.map((receita: ReceitaApi) => {
             return (
               <Produto
                 key={receita.id}

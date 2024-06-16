@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Delivery } from '../../utils/types'
 
 const initialState: Delivery = {
   receiver: '',

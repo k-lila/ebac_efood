@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type OrderId = {
-  orderId: string
-}
 const initialState: OrderId = {
   orderId: ''
 }

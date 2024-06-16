@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { setCart } from '../../store/reducers/modalCart'
 import { registerDelivery } from '../../store/reducers/delivery'
-import { Delivery } from '../../utils/types'
 import * as S from './styles'
 import { Container, Aside, Cart, Button } from '../Carrinho/styles'
+import ReactInputMask from 'react-input-mask'
 
 const Entrega = () => {
   const dispatch = useDispatch()
-  const [valid, setValid] = useState(false)
 
   const form = useFormik({
     initialValues: {
@@ -50,12 +48,6 @@ const Entrega = () => {
       )
     }
   })
-
-  useEffect(() => {
-    form.validateForm().then(() => {
-      setValid(form.isValid)
-    })
-  }, [form.isValid])
 
   return (
     <Container>
@@ -110,24 +102,26 @@ const Entrega = () => {
           <S.Row>
             <S.FormItem style={{ width: '155px' }}>
               <label htmlFor="cep">CEP</label>
-              <input
+              <ReactInputMask
                 type="text"
                 id="cep"
                 name="cep"
                 value={form.values.cep}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                mask="99999-999"
               />
             </S.FormItem>
             <S.FormItem style={{ width: '155px' }}>
               <label htmlFor="numero">Número</label>
-              <input
-                type="number"
+              <ReactInputMask
+                type="text"
                 id="numero"
                 name="numero"
                 value={form.values.numero}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                mask="99"
               />
             </S.FormItem>
           </S.Row>
@@ -142,7 +136,11 @@ const Entrega = () => {
               onBlur={form.handleBlur}
             />
           </S.FormItem>
-          <Button type="submit" style={{ marginTop: '16px' }} disabled={!valid}>
+          <Button
+            type="submit"
+            style={{ marginTop: '16px' }}
+            disabled={!form.isValid}
+          >
             Continuar com o pagamento
           </Button>
         </S.Form>

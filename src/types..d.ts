@@ -1,4 +1,4 @@
-export type ReceitaApi = {
+declare type ReceitaApi = {
   foto: string
   preco: number
   id: number
@@ -7,7 +7,7 @@ export type ReceitaApi = {
   porcao: string
 }
 
-export type RestauranteApi = {
+declare type RestauranteApi = {
   id: number
   titulo: string
   destacado: boolean
@@ -18,12 +18,12 @@ export type RestauranteApi = {
   cardapio: ReceitaApi[]
 }
 
-export type Product = {
+declare type Product = {
   id?: number
   price?: number
 }
 
-export type Delivery = {
+declare type Delivery = {
   receiver: string
   address: {
     description: string
@@ -34,7 +34,7 @@ export type Delivery = {
   }
 }
 
-export type Payment = {
+declare type Payment = {
   card: {
     name: string
     number: string
@@ -46,8 +46,12 @@ export type Payment = {
   }
 }
 
-export type Order = {
+declare type Order = {
   products: Product[]
   delivery: Delivery
   payment: Payment
+}
+
+declare type OrderId = {
+  orderId: string
 }
