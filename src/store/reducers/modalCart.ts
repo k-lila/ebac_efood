@@ -2,18 +2,24 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type ModalCart = {
   open: boolean
+  delivery: boolean
+  payment: boolean
+  conclude: boolean
 }
 
 const initialState: ModalCart = {
-  open: false
+  open: false,
+  delivery: false,
+  payment: false,
+  conclude: false
 }
 
 const cartSlice = createSlice({
   name: 'modalCart',
   initialState,
   reducers: {
-    setCart: (state, action: PayloadAction<boolean>) => {
-      state.open = action.payload
+    setCart: (state, action: PayloadAction<ModalCart>) => {
+      return action.payload
     }
   }
 })

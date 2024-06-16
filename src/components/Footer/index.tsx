@@ -1,6 +1,5 @@
 import Logo from '../Logo'
 import * as S from './style'
-
 import instagram from '../../assets/Logos/instagram.svg'
 import facebook from '../../assets/Logos/facebook.svg'
 import twitter from '../../assets/Logos/twitter.svg'

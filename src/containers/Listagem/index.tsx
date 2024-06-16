@@ -1,6 +1,6 @@
+import { useGetFeaturedInfoQuery } from '../../services/api'
 import Restaurante from '../../components/Restaurante'
 import { Container } from './styles'
-import { useGetFeaturedInfoQuery } from '../../services/api'
 
 const Listagem = () => {
   const restaurantes = useGetFeaturedInfoQuery().data

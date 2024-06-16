@@ -12,10 +12,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: end;
 `
-export const Background = styled.div`
+export const Aside = styled.aside`
   background-color: transparent;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 360px);
 `
 
 export const Cart = styled.aside`
@@ -23,6 +23,7 @@ export const Cart = styled.aside`
   height: 100%;
   width: 360px;
   padding: 32px 8px;
+  overflow-y: auto;
 `
 
 export const Item = styled.div`
@@ -31,7 +32,7 @@ export const Item = styled.div`
   background-color: ${Cores.bege2};
   color: ${Cores.vermelho};
   margin-bottom: 16px;
-  padding: 8px 8px 8px 12px;
+  padding: 8px;
   display: flex;
   position: relative;
 
@@ -79,7 +80,7 @@ export const Valor = styled.div`
   }
 `
 
-export const Entrega = styled.button`
+export const Button = styled.button`
   width: 100%;
   font-weight: 700;
   font-size: 14px;
@@ -88,6 +89,10 @@ export const Entrega = styled.button`
   cursor: pointer;
   background-color: ${Cores.bege2};
   color: ${Cores.vermelho};
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
 `
 export const SemItem = styled.p`
   background-color: transparent;

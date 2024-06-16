@@ -1,22 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
-import * as S from './styles'
 import { RootReducer } from '../../store'
-import formatoPreco from '../../utils/formatoPreco'
 import { setCart } from '../../store/reducers/modalCart'
-import lixeira from '../../assets/Imagens/lixeira.svg'
 import { removeItem } from '../../store/reducers/carrinho'
+import formatoPreco from '../../utils/formatoPreco'
+import * as S from './styles'
+import lixeira from '../../assets/Imagens/lixeira.svg'
 
 const Carrinho = () => {
   const carrinho = useSelector((state: RootReducer) => state.carrinho.items)
   const dispatch = useDispatch()
-
-  const handleClose = () => {
-    dispatch(setCart(false))
-  }
-
-  const handleRemove = (id: number) => {
-    dispatch(removeItem(id))
-  }
 
   const soma = carrinho
     .map((item) => item.preco)
@@ -24,7 +16,18 @@ const Carrinho = () => {
 
   return (
     <S.Container>
-      <S.Background onClick={handleClose} />
+      <S.Aside
+        onClick={() =>
+          dispatch(
+            setCart({
+              open: false,
+              delivery: false,
+              payment: false,
+              conclude: false
+            })
+          )
+        }
+      />
       <S.Cart>
         {carrinho.length !== 0 ? (
           carrinho.map((item) => (
@@ -35,7 +38,9 @@ const Carrinho = () => {
                 <p>{formatoPreco(item.preco)}</p>
               </div>
               <S.Lixeira
-                onClick={() => item.id !== undefined && handleRemove(item.id)}
+                onClick={() =>
+                  item.id !== undefined && dispatch(removeItem(item.id))
+                }
                 src={lixeira}
               />
             </S.Item>
@@ -47,7 +52,21 @@ const Carrinho = () => {
           <p>Valor total</p>
           <p>{formatoPreco(soma)}</p>
         </S.Valor>
-        <S.Entrega>Continuar com a entrega</S.Entrega>
+        <S.Button
+          onClick={() => {
+            dispatch(
+              setCart({
+                open: false,
+                delivery: true,
+                payment: false,
+                conclude: false
+              })
+            )
+          }}
+          disabled={soma ? (soma === 0 ? true : false) : true}
+        >
+          Continuar com a entrega
+        </S.Button>
       </S.Cart>
     </S.Container>
   )

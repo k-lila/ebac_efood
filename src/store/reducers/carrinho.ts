@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type CarrinhoItem = {
   id?: number
+  receitaId?: number
   receita?: string
   foto?: string
   preco?: number

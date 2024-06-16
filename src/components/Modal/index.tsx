@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { useGetFeaturedInfoQuery } from '../../services/api'
 import { setModal } from '../../store/reducers/modal'
-import * as S from './styles'
-import close from '../../assets/Imagens/close.svg'
-import formatoPreco from '../../utils/formatoPreco'
 import { adicionaItem } from '../../store/reducers/carrinho'
 import { setCart } from '../../store/reducers/modalCart'
+import formatoPreco from '../../utils/formatoPreco'
+import * as S from './styles'
+import close from '../../assets/Imagens/close.svg'
 
 const getNewId = (lista_id: number[]) => {
   let newId = 0
@@ -37,13 +37,16 @@ const Modal = () => {
     dispatch(
       adicionaItem({
         id: getNewId(lista_id),
+        receitaId: receitaSelecionada?.id,
         receita: receitaSelecionada?.nome,
         foto: receitaSelecionada?.foto,
         preco: receitaSelecionada?.preco
       })
     )
     handleClose()
-    dispatch(setCart(true))
+    dispatch(
+      setCart({ open: true, delivery: false, payment: false, conclude: false })
+    )
   }
 
   return (

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
+import { useGetFeaturedInfoQuery } from '../../services/api'
 import Produto from '../../components/Produto'
 import * as S from './style'
-import { useGetFeaturedInfoQuery } from '../../services/api'
 
 const Produtos = () => {
   const { id } = useParams()
