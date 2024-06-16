@@ -23,9 +23,15 @@ const Entrega = () => {
       nome: Yup.string().min(5).required(),
       endereco: Yup.string().min(5).required(),
       cidade: Yup.string().min(2).required(),
-      cep: Yup.string().min(9).max(9).required(),
-      numero: Yup.string().min(1).max(3).required()
+      cep: Yup.string()
+        .min(9)
+        .max(9)
+        .matches(/^\d{5}-\d{3}$/),
+      numero: Yup.string()
+        .matches(/^\d{2}$/)
+        .required()
     }),
+    validateOnMount: true,
     onSubmit: (values) => {
       const delivery: Delivery = {
         receiver: values.nome,

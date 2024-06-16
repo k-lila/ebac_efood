@@ -41,10 +41,18 @@ const Pagamento = () => {
     },
     validationSchema: Yup.object({
       nomeCartao: Yup.string().min(5).required(),
-      numCartao: Yup.string().required(),
-      ccv: Yup.string().min(1).max(3).required(),
-      mesVencimento: Yup.string().min(1).max(2).required(),
-      anoVencimento: Yup.string().min(4).max(4).required()
+      numCartao: Yup.string()
+        .matches(/^\d{4} \d{4} \d{4} \d{4}$/)
+        .required(),
+      ccv: Yup.string()
+        .matches(/^\d{3}$/)
+        .required(),
+      mesVencimento: Yup.string()
+        .matches(/^\d{2}$/)
+        .required(),
+      anoVencimento: Yup.string()
+        .matches(/^\d{4}$/)
+        .required()
     }),
     onSubmit: (values) => {
       const payment: Payment = {
@@ -64,7 +72,8 @@ const Pagamento = () => {
         payment: payment
       }
       purchase(order)
-    }
+    },
+    validateOnMount: true
   })
 
   useEffect(() => {

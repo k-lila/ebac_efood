@@ -6,7 +6,6 @@ export const Container = styled.div`
   height: 280px;
   display: flex;
 
-  position: relative;
   background-position: center;
   background-size: 100% auto;
 
